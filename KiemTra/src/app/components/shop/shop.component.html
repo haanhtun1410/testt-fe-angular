@@ -1,0 +1,58 @@
+<section class="container align-items-center">
+    <div class="main-content-wrapper d-flex">
+        <div class="shop_sidebar_area">
+            <div class="widget catagory">
+                <h6 class="widget-title mb-30">Categories</h6>
+                <div class="catagories-menu">
+                    <ul>
+                        <li><a>all</a></li>
+                        <li *ngFor="let category of subcategories">
+                            <a>{{ category.subCateName }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="amado_product_area section-padding-100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                            <div class="total-products">
+                                <p>
+                                    Showing {{ products.length }} of {{ products.length }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div *ngFor="let product of products  | paginate : { itemsPerPage: 8, currentPage: p } ; let i = index"
+                        class="col-12 col-sm-3 col-md-12 col-xl-3">
+                        <div class="single-product-wrapper">
+                            <div class="product-img">
+                                <img src="../assets/img/product/{{i+1}}.jpg"
+                                    style="width: 240px; height: 300px; object-fit: cover" alt="" />
+                            </div>
+                            <div class="product-description d-flex align-items-center justify-content-between">
+                                <div class="product-meta-data">
+                                    <h6>{{ product.productName }}</h6>
+                                    <p class="product-price">${{ product.sellPrice }}</p>
+                                </div>
+                                <div class="ratings-cart text-right">
+                                    <div class="cart">
+                                        <a data-toggle="tooltip" data-placement="left" title="Add to Cart"
+                                            style="margin-right: 5px"><img src="/assets/img/cart.png" alt="" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <pagination-controls (pageChange)="p = $event" (responsive)="(true)"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,152 @@
+<H1 class="text-center">QUẢN LÝ NHÂN VIÊN TẬP ĐOÀN HẢI SẢN</H1>
+<br />
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Sex</th>
+        <th>image</th>
+        <th>Functions</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of listEmp">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.sex }}</td>
+        <td>
+          <img
+            src="../assets/{{ employee.image }}"
+            alt="{{ employee.image }}"
+            style="width: 60px"
+            srcset=""
+            class="image-fluid"
+          />
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="getDetail(employee.id)"
+          >
+            Detail
+          </button>
+          <button
+            type="button"
+            class="btn btn-warning"
+            (click)="deleteEmployee(employee.id)"
+          >
+            Delete
+          </button>
+          |
+        </td>
+        <td>
+          <input
+            type="checkbox"
+            [checked]="isEmployeeSelected(employee)"
+            (change)="toggleEmployeeSelection(employee)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-danger" (click)="multiDeleteEmployee()">
+    Delete Selected
+  </button>
+
+  <h1>Form</h1>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group" style="border: 1px">
+      <label for="id">ID:</label>
+      <input
+        type="number"
+        id="id"
+        class="form-control"
+        formControlName="id"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input
+        type="number"
+        id="age"
+        class="form-control"
+        formControlName="age"
+        required
+      />
+    </div>
+    <span
+      *ngIf="employeeForm.controls['age'].errors?.['ageRange']"
+      class="text-danger"
+    >
+      ***Age must be between 18 and 60.
+    </span>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        id="address"
+        class="form-control"
+        formControlName="address"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="sex">Sex:</label>
+      <select id="sex" class="form-control" formControlName="sex" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input
+        type="file"
+        id="image"
+        class="form-control"
+        (change)="onFileSelected($event)"
+        formControlName="image"
+        required
+      />
+    </div>
+    <span>Please select image from src/app/assets/</span>
+    <br />
+    <button
+      type="submit"
+      class="btn btn-primary"
+      style="margin-right: 10px"
+      [disabled]="employeeForm.invalid"
+    >
+      Add
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="employeeForm.invalid"
+      (click)="updateEmp(employeeForm.controls['id'].value)"
+    >
+      Update by ID
+    </button>
+  </form>
+  <img src="" alt="" />
+  <br />
+</div>

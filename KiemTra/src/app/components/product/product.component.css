@@ -1,0 +1,27 @@
+.static-table {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.static-table .table {
+  min-width: 100%;
+}
+.table-fixed {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-fixed td {
+  white-space: nowrap; /* Prevent line breaks within cells */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Display ellipsis (...) for overflowing content */
+}
+.table-fixed .function-td {
+  text-overflow: unset;
+  overflow: visible; /* Hide overflowing content */
+}
+
+.table-fixed tbody {
+  overflow-y: scroll; /* Enable vertical scrolling */
+  height: 300px; /* Set a fixed height for the table body */
+}

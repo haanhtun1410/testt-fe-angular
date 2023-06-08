@@ -1,0 +1,12 @@
+@import url(/src/css/custom/style.css);
+@import url(/src/css/custom/core-style.css);
+@import url(/src/css/plugins/iconic/css/material-design-iconic-font.css);
+
+@import url("/src/css/plugins/iconic/css/material-design-iconic-font.css");
+@import url("/src/css/plugins/animate.css/animate.min.css");
+
+@import url("/src/css/plugins/bootstrap-icons/bootstrap-icons.css");
+@import url("/src/css/plugins/boxicons/css/boxicons.min.css");
+@import url("/src/css/plugins/glightbox/css/glightbox.min.css");
+@import url("/src/css/plugins/remixicon/remixicon.css");
+@import url("/src/css/plugins/swiper/swiper-bundle.min.css");
