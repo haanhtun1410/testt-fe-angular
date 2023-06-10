@@ -24,24 +24,6 @@ export class ProductService {
     return this.httpClient.get<any>(this.apiUrl);
   }
 
-  public getAllBrands(): Observable<any> {
-    return this.httpClient.get<any>(
-      'http://localhost:8080/api/products/brands'
-    );
-  }
-
-  public getAllStatuses(): Observable<any> {
-    return this.httpClient.get<any>(
-      'http://localhost:8080/api/products/statuses'
-    );
-  }
-
-  public getAllSubCategories(): Observable<any> {
-    return this.httpClient.get<any>(
-      'http://localhost:8080/api/products/subcategories'
-    );
-  }
-
   // GET a single product by ID
   getProductById(productId: number): Observable<any> {
     const url = `${this.apiUrl}/${productId}`;
@@ -71,6 +53,24 @@ export class ProductService {
   deleteProduct(productId: number): Observable<any> {
     const url = `${this.apiUrl}/${productId}`;
     return this.httpClient.delete<any>(url);
+  }
+
+  public getAllBrands(): Observable<any> {
+    return this.httpClient.get<any>(
+      'http://localhost:8080/api/products/brands'
+    );
+  }
+
+  public getAllStatuses(): Observable<any> {
+    return this.httpClient.get<any>(
+      'http://localhost:8080/api/products/statuses'
+    );
+  }
+
+  public getAllSubCategories(): Observable<any> {
+    return this.httpClient.get<any>(
+      'http://localhost:8080/api/products/subcategories'
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

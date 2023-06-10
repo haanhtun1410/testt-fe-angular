@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/product.service';
 export class ShopComponent {
   products: Product[] = [];
   subcategories: SubCategory[] = [];
+
   p: number = 1;
   constructor(public productService: ProductService) {}
 
