@@ -7,13 +7,23 @@
                     <ul>
                         <li><a>all</a></li>
                         <li *ngFor="let category of subcategories">
-                            <a>{{ category.subCateName }}</a>
+                            <a (click)="getByCategory(category)" >{{ category.subCateName }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="widget catagory">
+                <h6 class="widget-title mb-30">Brands</h6>
+                <div class="catagories-menu">
+                    <ul>
+                        <li><a>all</a></li>
+                        <li *ngFor="let brand of brands">       
+                   <a (click)="getByBrands(brand.products)" >{{ brand.brandName }}</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-
         <div class="amado_product_area section-padding-100">
             <div class="container-fluid">
                 <div class="row">

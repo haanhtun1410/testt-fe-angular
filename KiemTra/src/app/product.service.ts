@@ -29,6 +29,10 @@ export class ProductService {
     const url = `${this.apiUrl}/${productId}`;
     return this.httpClient.get<any>(url);
   }
+  getProductBySubcateId(cateId: number): Observable<any> {
+    const url = `${this.apiUrl}/subcategories/${cateId}`;
+    return this.httpClient.get<any>(url);
+  }
 
   // CREATE a new product
   createProduct(product: Product): Observable<Product> {
