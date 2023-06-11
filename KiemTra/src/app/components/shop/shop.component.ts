@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Brand } from 'src/app/model/Brand';
 import { Product } from 'src/app/model/Product';
 import { SubCategory } from 'src/app/model/SubCategory';
 import { ProductService } from 'src/app/product.service';
@@ -11,7 +12,7 @@ import { ProductService } from 'src/app/product.service';
 export class ShopComponent {
   products: Product[] = [];
   subcategories: SubCategory[] = [];
-
+  brands: Brand[] = [];
   p: number = 1;
   constructor(public productService: ProductService) {}
 
@@ -23,5 +24,26 @@ export class ShopComponent {
     this.productService.getAllSubCategories().subscribe((data) => {
       this.subcategories = data;
     });
+    this.productService.getAllBrands().subscribe((data) => {
+      this.brands = data;
+    });
+  }
+  getProductsByCategory(categoryId: number): void {
+    // Call the method to fetch products by category ID
+    this.productService
+      .getAllProductBySubCategories(categoryId)
+      .subscribe((products: any) => {
+        this.products = products;
+        console.log(products);
+      });
+  }
+
+  getProductsByBrand(brandId: number): void {
+    // Call the method to fetch products by brand ID
+    this.productService
+      .getAllProductByBrands(brandId)
+      .subscribe((products: any) => {
+        this.products = products;
+      });
   }
 }

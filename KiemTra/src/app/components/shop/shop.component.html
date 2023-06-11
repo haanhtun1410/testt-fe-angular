@@ -5,13 +5,23 @@
                 <h6 class="widget-title mb-30">Categories</h6>
                 <div class="catagories-menu">
                     <ul>
-                        <li><a>all</a></li>
+                        <li><a href="/shop">all</a></li>
                         <li *ngFor="let category of subcategories">
-                            <a>{{ category.subCateName }}</a>
+                            <a (click)="getProductsByCategory(category.id)">{{ category.subCateName }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <h6 class="widget-title mb-30">Categories</h6>
+                <div class="catagories-menu">
+                    <ul>
+                        <li><a href="/shop">all</a></li>
+                        <li *ngFor="let brand of brands">
+                            <a (click)="getProductsByBrand(brand.id)">{{ brand.brandName }}</a>
                         </li>
                     </ul>
                 </div>
             </div>
+
         </div>
 
         <div class="amado_product_area section-padding-100">

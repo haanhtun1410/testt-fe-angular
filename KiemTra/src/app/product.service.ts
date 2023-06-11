@@ -72,6 +72,14 @@ export class ProductService {
       'http://localhost:8080/api/products/subcategories'
     );
   }
+  public getAllProductBySubCategories(id: number): Observable<any> {
+    var uri = 'http://localhost:8080/api/products/subcategories/' + id;
+    return this.httpClient.get<any>(uri);
+  }
+  public getAllProductByBrands(id: number): Observable<any> {
+    var uri = 'http://localhost:8080/api/products/brands/' + id;
+    return this.httpClient.get<any>(uri);
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
